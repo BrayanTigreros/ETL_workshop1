@@ -1,4 +1,4 @@
-# 📊 Candidate Application Data Warehouse
+# 📊 ETL WORKSHOP 01
 
 ## Project Overview
 
