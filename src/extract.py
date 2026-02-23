@@ -12,8 +12,8 @@ def extract_candidates(path):
         "yoe",
         "seniority",
         "technology",
-        "code_score",
-        "technical_score"
+        "code_challenge_score",
+        "technical_interview_score"
     ]
 
     return df_candidates

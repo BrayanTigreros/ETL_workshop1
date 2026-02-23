@@ -64,13 +64,13 @@ def create_fact_table(df,
                   how="left")
 
     df["hired_flag"] = (
-        (df["code_score"] >= 7) &
-        (df["technical_score"] >= 7)
+        (df["code_challenge_score"] >= 7) &
+        (df["technical_interview_score"] >= 7)
     ).astype(bool)
 
     fact_application = df[[
-        "code_score",
-        "technical_score",
+        "code_challenge_score",
+        "technical_interview_score",
         "yoe",
         "hired_flag",
         "country_key",

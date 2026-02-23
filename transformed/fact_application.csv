@@ -1,4 +1,4 @@
-code_score,technical_score,yoe,hired_flag,country_key,candidate_key,technology_key,seniority_key,date_key
+code_challenge_score,technical_interview_score,yoe,hired_flag,country_key,candidate_key,technology_key,seniority_key,date_key
 3,3,2,False,1,1,1,1,20210226
 2,10,10,False,2,2,1,1,20210909
 10,9,4,True,3,3,2,2,20200414
