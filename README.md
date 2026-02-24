@@ -8,6 +8,12 @@ To apply an ETL process to extract the applicant information. To transform the c
 
 ---
 
+## KPIs requeriments
+
+The KPIs from de dashboard show us important information about the Hired by Years, Technology, Country over Years and Seniority, in addition the dashboard show also the top 10 average code and technology scores by technology and the hired by age ranges
+
+--
+
 ## 🗂️ Dimensional Model — Star Schema
 
 This star schema dimensional model was designed because the core business objective is the application of candidates to a company. The fact table should contain information about the scores obtained on the company's tests, the years of experience of each applicant, and their suitability for the job.
