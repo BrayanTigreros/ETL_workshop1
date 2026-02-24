@@ -8,9 +8,18 @@ To apply an ETL process to extract the applicant information. To transform the c
 
 ---
 
-## KPIs requeriments
+## KPIs and requeriments
 
-The KPIs from de dashboard show us important information about the Hired by Years, Technology, Country over Years and Seniority, in addition the dashboard show also the top 10 average code and technology scores by technology and the hired by age ranges
+The KPIs from de dashboard show us important information about the Hirings by Years, Technology, Country over Years and Seniority, in addition the dashboard show also the top 10 average code and technology scores by technology and the hired by age ranges
+
+About the requieriments, the KPIS meet the following requirements
+
+- How many hirings are there for each of the technologies?
+- How many hires are there for each year?
+- How many hires are there according to the Seniority level?
+- How many hirings are there for each country over the years?
+- What is the average score obtained by the candidates in the Code Challenge and in the Technical Enterview by Technology?
+- How many hiring are there per age range?
 
 --
 
