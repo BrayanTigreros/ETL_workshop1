@@ -21,7 +21,7 @@ About the requieriments, the KPIS meet the following requirements
 - What is the average score obtained by the candidates in the Code Challenge and in the Technical Enterview by Technology?
 - How many hiring are there per age range?
 
---
+---
 
 ## 🗂️ Dimensional Model — Star Schema
 
