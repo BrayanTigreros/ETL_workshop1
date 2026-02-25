@@ -67,7 +67,16 @@ For data loading, we have two functions:
 ---
 
 ## Data quality assumptions
-In progress...
+
+Regarding data quality, we found no null, outlier, or negative data in the EDA. Therefore, we assume the following from the raw CSV data:
+
+- First name, Last name, email, country, seniority, and technology are strings and are not null.
+
+- Application date is a string, but it is converted to a date type during transformation and is not null.
+
+- YOE, Code Challenge Score, and Technical Interview Score are integers and are not null.
+
+- Hired flag is a boolean (true or false) calculated from the Code Challenge Score and Technical Interview Score.
 
 ---
 
@@ -78,3 +87,12 @@ To run this project, you must download the repository from GitHub. Inside the ma
 Once the DW has been created, you will execute the entire ETL pipeline. You can do this using Visual Studio Code and select the folder if you downloaded it, or simply clone the repository. Once the folder is selected, you must change the paths on your computer and your database credentials (username and password).
 
 Once everything is configured on your computer, you must run the main file, which orchestrates the entire project. Once executed, main will call the ETL process functions and execute the pipeline, from extraction and transformation to finally loading the data into the DW.
+
+---
+
+## Example Outputs
+
+
+
+
+
