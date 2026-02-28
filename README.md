@@ -146,7 +146,7 @@ This project consumes the Data Warehouse from Power BI through an ODBC Data Sour
 - Open the Data Sources (64-bit) in Windows
 - Go to the System DSN
 - Click add
-- Select MySQL Unicode Driver (9.6 in this case the most recently
+- Select MySQL Unicode Driver (9.6 in this case the most recently)
 - Configure with this following steps:
   
     - Data source name: Workshop1
