@@ -163,7 +163,7 @@ This project consumes the Data Warehouse from Power BI through an ODBC Data Sour
 The repository contains the PowerBI report to run in your PC. Follow the steps below to connect it to your local Data Warehouse after cloning the project.
 
 Locate the file:
-- workshop_01/KPIs workshop1.pbix
+- etl_workshop_01/KPI_workshop1.pbix
 
 Open it with Power BI and update Data Source Credentials
 - In Power BI go to: Home → Transform Data → Data Source Settings
