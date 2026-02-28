@@ -157,7 +157,7 @@ This project consumes the Data Warehouse from Power BI through an ODBC Data Sour
     - Database: workshop1
   
 - Click test
-- Click OK to save DNS
+- Click OK to save DSN
 
 
 The repository contains the PowerBI report to run in your PC. Follow the steps below to connect it to your local Data Warehouse after cloning the project.
