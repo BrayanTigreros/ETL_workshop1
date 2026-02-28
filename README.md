@@ -23,11 +23,15 @@ About the requieriments, the KPIS meet the following requirements
 
 ---
 
-## 🗂️ Dimensional Model — Star Schema
+## Dimensional Model — Star Schema
 
 This star schema dimensional model was designed because the core business objective is the application of candidates to a company. The fact table should contain information about the scores obtained on the company's tests, the years of experience of each applicant, and their suitability for the job.
 
 The dimensions use surrogate keys to relate to the fact table. These dimensions are the descriptive attributes of each applicant. This allows us to know their personal information, country of origin, profession, seniority levels, and the date they applied to the company. Including a time dimension facilitates historical trend analysis using KPIs.
+
+
+<img width="1203" height="781" alt="Captura de pantalla 2026-02-23 152605" src="https://github.com/user-attachments/assets/62551742-24b6-4657-8d9e-2e9ef0c140d1" />
+
 
 ---
 
@@ -46,7 +50,7 @@ Level of detail equals: 1 candidate
 
 ---
 
-## ⚙️ ETL Logic
+## ETL Logic
 
 ### Extract
 We use a function to read the candidates' CSV files and store them in a staging area, in this case, pandas dataframes
@@ -80,19 +84,109 @@ Regarding data quality, we found no null, outlier, or negative data in the EDA. 
 
 ---
 
-## 🚀 How to run the project
+##  How to run the project
 
 To run this project, you must download the repository from GitHub. Inside the main folder, you will find a folder called sql. Inside this folder, there will be a script called create_tables.sql. This script creates the star schema data warehouse (DW). Ideally, it should be run in a MySQL environment.
 
 Once the DW has been created, you will execute the entire ETL pipeline. You can do this using Visual Studio Code and select the folder if you downloaded it, or simply clone the repository. Once the folder is selected, you must change the paths on your computer and your database credentials (username and password).
 
+To install dependencies:
+```
+pip install -r requirements.txt
+```
+
 Once everything is configured on your computer, you must run the main file, which orchestrates the entire project. Once executed, main will call the ETL process functions and execute the pipeline, from extraction and transformation to finally loading the data into the DW.
+
 
 ---
 
 ## Example Outputs
 
+Fact table:
+<img width="1893" height="742" alt="Captura de pantalla 2026-02-27 215459" src="https://github.com/user-attachments/assets/422672e6-1e8a-491b-b901-6d7b11650bde" />
+
+Candidate dimension:
+<img width="1151" height="737" alt="Captura de pantalla 2026-02-27 215542" src="https://github.com/user-attachments/assets/c0876365-d984-4f4e-a9aa-90b68f271fd3" />
+
+ ### Some SQL queries from the DW
+
+- Hired by Technology
+ ```
+SELECT 
+    dt.technology AS cargo,
+    COUNT(*) AS contratados
+FROM fact_application fa
+JOIN dim_technology dt ON fa.technology_key = dt.technology_key
+WHERE fa.hired_flag = TRUE
+GROUP BY dt.technology
+ORDER BY contratados DESC;
+```
+<img width="1917" height="1021" alt="Captura de pantalla 2026-02-27 220016" src="https://github.com/user-attachments/assets/ef79f22b-111e-40ea-8c3d-c403acbe0b25" />
 
 
+- Hired by Country over Years
+```
+SELECT 
+    dc.country AS pais,
+    COUNT(*) AS contratados
+FROM fact_application fa
+JOIN dim_country dc ON fa.country_key = dc.country_key
+WHERE fa.hired_flag = TRUE
+    AND dc.country IN ('Colombia', 'Brazil', 'United States of America', 'Ecuador')
+GROUP BY dc.country
+ORDER BY contratados DESC;
+```
+<img width="1913" height="770" alt="Captura de pantalla 2026-02-27 220225" src="https://github.com/user-attachments/assets/48b0ed02-39c5-46f3-b832-e3ddc9fea5eb" />
 
+## How to connect Power BI file with the DW (ODBC Connection)
+
+This project consumes the Data Warehouse from Power BI through an ODBC Data Source Name (DSN) configured with the MySQL ODBC driver.
+
+- You must to download the NET and the Unicode Driver
+- Open the Data Sources (64-bit) in Windows
+- Go to the System DSN
+- Click add
+- Select MySQL Unicode Driver (9.6 in this case the most recently
+- Configure with this following steps:
+  
+    - Data source name: Workshop1
+    - Port: 3306
+    - TCP/IP Server: localhost
+    - User: <your_MySQL_Workbench_user>
+    - Password: <your_password>
+    - Database: workshop1
+  
+- Click test
+- Click OK to save DNS
+
+
+The repository contains the PowerBI report to run in your PC. Follow the steps below to connect it to your local Data Warehouse after cloning the project.
+
+Locate the file:
+- workshop_01/KPIs workshop1.pbix
+
+Open it with Power BI and update Data Source Credentials
+- In Power BI go to: Home → Transform Data → Data Source Settings
+- Select the ODBC source
+- Click Edit Permissions
+- Enter your MySQL credentials if prompted
+- Confirm that the DSN used is: Workshop1
+
+Refresh the dataset and you will see:
+
+- Hires by Technology
+- Hires by Year
+- Hires by Country over Years
+- Hired by Seniority
+- Top 10 Average code and technical score by Technology
+- Hired by Age range
+
+## KPI examples
+<img width="1267" height="714" alt="Workshop KPI 1" src="https://github.com/user-attachments/assets/068d5301-5157-464e-bfbe-7bc8ca7a85d5" />
+
+<img width="1267" height="711" alt="Workshop KPI 2" src="https://github.com/user-attachments/assets/c7d5ac06-a621-4424-8f39-a9219ef3a6c2" />
+
+<img width="1270" height="712" alt="Workshop KPI 3" src="https://github.com/user-attachments/assets/5206fb38-2831-4044-808d-29f7bf017240" />
+
+<img width="1270" height="712" alt="Workshop KPI 4" src="https://github.com/user-attachments/assets/909cf91e-aef7-4fd8-a251-ee659a3dc4d7" />
 
