@@ -90,7 +90,7 @@ To run this project, you must download the repository from GitHub. Inside the ma
 
 Once the DW has been created, you will execute the entire ETL pipeline. You can do this using Visual Studio Code and select the folder if you downloaded it, or simply clone the repository. Once the folder is selected, you must change the paths on your computer and your database credentials (username and password).
 
-To install dependencies:
+Install dependencies:
 ```
 pip install -r requirements.txt
 ```
